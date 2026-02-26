@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. [Nama Dokter] | Profesional & Peduli Kesehatan Anda</title>
+    <meta name="description" content="Profil profesional Dr. [Nama Dokter]. Spesialisasi dalam memberikan solusi kesehatan yang personal, edukatif, dan penuh empati untuk kenyamanan pasien.">
+    
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --primary: #0a4d68;
+            --secondary: #088395;
+            --accent: #05bfdb;
+            --light: #f0f9ff;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { color: var(--text-dark); line-height: 1.6; background-color: var(--white); }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* HERO SECTION */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.9), rgba(8, 131, 149, 0.7)), url('assets/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.9; }
+        .btn {
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* SECTION STYLING */
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
+        .section-title .divider { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+
+        /* TENTANG DOKTER */
+        #tentang { background-color: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+        .about-img img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--secondary); }
+        .video-container { margin-top: 2rem; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        video { width: 100%; display: block; }
+
+        /* PENDIDIKAN & SERTIFIKASI */
+        #pendidikan { background-color: var(--light); }
+        .edu-list { max-width: 800px; margin: 0 auto; }
+        .edu-item { 
+            background: var(--white); 
+            padding: 2rem; 
+            margin-bottom: 1.5rem; 
+            border-radius: var(--radius); 
+            display: flex; 
+            gap: 2rem; 
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--secondary);
+        }
+        .edu-year { font-weight: 700; color: var(--secondary); min-width: 100px; }
+
+        /* LAYANAN MEDIS */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .service-card { 
+            padding: 3rem 2rem; 
+            background: var(--white); 
+            border-radius: var(--radius); 
+            text-align: center; 
+            transition: 0.3s; 
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .service-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 1.5rem; display: block; }
+        .service-card h4 { margin-bottom: 1rem; font-size: 1.3rem; }
+
+        /* JADWAL PRAKTIK */
+        #jadwal { background: var(--primary); color: var(--white); }
+        #jadwal .section-title h2 { color: var(--white); }
+        .schedule-table { max-width: 700px; margin: 0 auto; width: 100%; border-collapse: collapse; }
+        .schedule-table tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .schedule-table td { padding: 1.5rem; }
+        .day { font-weight: 600; color: var(--accent); }
+        .time { text-align: right; }
+
+        /* TESTIMONI */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testi-card { 
+            background: var(--light); 
+            padding: 2.5rem; 
+            border-radius: var(--radius); 
+            position: relative;
+            font-style: italic;
+        }
+        .testi-card::before { content: '"'; font-size: 4rem; position: absolute; top: 10px; left: 20px; color: var(--accent); opacity: 0.3; }
+        .patient-name { display: block; margin-top: 1.5rem; font-weight: 700; font-style: normal; color: var(--primary); }
+
+        /* GALERI */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+        .gallery-item { height: 300px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { scale: 1.1; }
+
+        /* KONTAK */
+        #kontak { background-color: var(--light); }
+        .contact-container { text-align: center; max-width: 600px; margin: 0 auto; }
+        .contact-info { margin-top: 2rem; display: grid; gap: 1.5rem; }
+        .contact-box { background: var(--white); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .contact-box strong { display: block; color: var(--secondary); margin-bottom: 0.5rem; }
+
+        footer { background: #052c3c; color: #cbd5e1; padding: 3rem 5%; text-align: center; font-size: 0.9rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .edu-item { flex-direction: column; text-align: center; gap: 0.5rem; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Dr. [Nama Lengkap]</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#jadwal">Jadwal</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Kesehatan Anda Adalah Prioritas Kami</h1>
+            <p>Menyediakan layanan medis profesional dengan sentuhan personal. Kami percaya bahwa setiap pasien berhak mendapatkan penjelasan yang jelas dan perawatan yang tulus.</p>
+            <a href="#kontak" class="btn">Konsultasi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- TENTANG DOKTER -->
+    <section id="tentang">
+        <div class="section-title">
+            <h2>Tentang Dokter</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-img">
+                <!-- Foto Utama -->
+                <img src="assets/about.jpg" alt="Dr. [Nama]">
+                <!-- Video Profil Opsional -->
+                <div class="video-container">
+                    <video controls poster="assets/about.jpg">
+                        <source src="assets/profile.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Dedikasi untuk Kesehatan Masyarakat</h3>
+                <p>Halo, saya Dr. [Nama Dokter]. Perjalanan saya di dunia medis didorong oleh satu tujuan sederhana: membantu orang lain merasa lebih baik tidak hanya secara fisik, tetapi juga secara mental melalui edukasi yang tepat.</p>
+                <br>
+                <p>Dengan pengalaman lebih dari [X] tahun, saya fokus pada pendekatan medis yang berbasis bukti (evidence-based) namun tetap mengedepankan sisi kemanusiaan. Saya percaya komunikasi adalah kunci utama dalam proses penyembuhan.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="assets/gallery1.jpg" alt="Kegiatan Medis 1"></div>
+                    <div class="gallery-item"><img src="assets/gallery2.jpg" alt="Kegiatan Medis 2"></div>
+                    <div class="gallery-item"><img src="assets/gallery3.jpg" alt="Kegiatan Medis 3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENDIDIKAN & SERTIFIKASI -->
+    <section id="pendidikan">
+        <div class="section-title">
+            <h2>Pendidikan & Sertifikasi</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="edu-list">
+            <div class="edu-item">
+                <div class="edu-year">20XX - 20XX</div>
+                <div class="edu-info">
+                    <h4>Spesialis [Nama Spesialisasi]</h4>
+                    <p>Universitas [Nama Universitas], [Kota]</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-year">20XX</div>
+                <div class="edu-info">
+                    <h4>Sertifikasi Internasional [Nama Bidang]</h4>
+                    <p>[Nama Lembaga Pemberi Sertifikat]</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-year">20XX</div>
+                <div class="edu-info">
+                    <h4>Gelar Kedokteran Umum</h4>
+                    <p>Universitas [Nama Universitas]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAYANAN MEDIS -->
+    <section id="layanan">
+        <div class="section-title">
+            <h2>Layanan Medis</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <h4>Konsultasi Umum</h4>
+                <p>Pemeriksaan kesehatan menyeluruh dan diagnosa dini untuk berbagai keluhan kesehatan Anda.</p>
+            </div>
+            <div class="service-card">
+                <h4>Pemeriksaan Spesialis</h4>
+                <p>Penanganan mendalam sesuai dengan bidang keahlian spesialisasi dengan teknologi medis terkini.</p>
+            </div>
+            <div class="service-card">
+                <h4>Edukasi Kesehatan</h4>
+                <p>Program bimbingan pola hidup sehat untuk pencegahan penyakit jangka panjang bagi keluarga.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JADWAL PRAKTIK -->
+    <section id="jadwal">
+        <div class="section-title">
+            <h2>Jadwal Praktik</h2>
+            <div class="divider"></div>
+        </div>
+        <table class="schedule-table">
+            <tr><td class="day">Senin - Rabu</td><td class="time">09:00 - 15:00</td></tr>
+            <tr><td class="day">Kamis</td><td class="time">13:00 - 18:00</td></tr>
+            <tr><td class="day">Jumat</td><td class="time">09:00 - 12:00</td></tr>
+            <tr><td class="day">Sabtu</td><td class="time">Dengan Janji Temu</td></tr>
+            <tr><td class="day">Minggu</td><td class="time">Libur</td></tr>
+        </table>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section id="testimoni">
+        <div class="section-title">
+            <h2>Apa Kata Pasien</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testi-card">
+                <p>"Dokter sangat sabar menjelaskan kondisi saya. Saya tidak merasa terburu-buru dan merasa sangat didengarkan. Penjelasannya sangat mudah dipahami."</p>
+                <span class="patient-name">- Bpk. Aris Kurniawan</span>
+            </div>
+            <div class="testi-card">
+                <p>"Pelayanannya sangat profesional. Ruang praktiknya nyaman dan jadwalnya sangat tepat waktu. Sangat merekomendasikan dokter ini."</p>
+                <span class="patient-name">- Ibu Siska Amelia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="contact-container">
+            <p>Ingin menjadwalkan konsultasi atau memiliki pertanyaan medis? Silakan hubungi kami melalui saluran di bawah ini.</p>
+            <div class="contact-info">
+                <div class="contact-box">
+                    <strong>Lokasi Praktik</strong>
+                    <p>Rumah Sakit [Nama RS], Jl. Kesehatan No. 123, [Kota]</p>
+                </div>
+                <div class="contact-box">
+                    <strong>WhatsApp / Telepon</strong>
+                    <p>+62 812 3456 7890</p>
+                </div>
+                <div class="contact-box">
+                    <strong>Email Resmi</strong>
+                    <p>dr.[nama]@email.com</p>
+                </div>
+            </div>
+            <br><br>
+            <a href="https://wa.me/6281234567890" class="btn">Chat via WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Dr. [Nama Lengkap]. All Rights Reserved. <br> Dirancang untuk kenyamanan pasien.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll listener for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
