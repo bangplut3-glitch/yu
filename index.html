@@ -57,7 +57,7 @@
             align-items: center;
             justify-content: center;
             padding: 0 5%;
-            background: linear-gradient(135deg, rgba(10, 77, 104, 0.9), rgba(8, 131, 149, 0.7)), url('assets/hero.jpg');
+            background: linear-gradient(135deg, rgba(10, 77, 104, 0.9), rgba(8, 131, 149, 0.7)), url('hero.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
@@ -86,7 +86,7 @@
         /* TENTANG DOKTER */
         #tentang { background-color: var(--white); }
         .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
-        .about-img img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .about-img img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); min-height: 300px; background: #eee; }
         .about-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--secondary); }
         .video-container { margin-top: 2rem; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
         video { width: 100%; display: block; }
@@ -146,7 +146,7 @@
         /* GALERI */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
         .gallery-item { height: 300px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; background: #ddd; }
         .gallery-item:hover img { scale: 1.1; }
 
         /* KONTAK */
@@ -200,12 +200,13 @@
         </div>
         <div class="about-grid">
             <div class="about-img">
-                <!-- Foto Utama -->
-                <img src="assets/about.jpg" alt="Dr. [Nama]">
-                <!-- Video Profil Opsional -->
+                <!-- FOTO PROFIL (Nama file harus: about.jpg) -->
+                <img src="about.jpg" alt="Foto Profil Dr. [Nama]">
+                
+                <!-- Video Profil Opsional (Nama file harus: profile.mp4) -->
                 <div class="video-container">
-                    <video controls poster="assets/about.jpg">
-                        <source src="assets/profile.mp4" type="video/mp4">
+                    <video controls poster="about.jpg">
+                        <source src="profile.mp4" type="video/mp4">
                         Browser Anda tidak mendukung tag video.
                     </video>
                 </div>
@@ -217,9 +218,9 @@
                 <p>Dengan pengalaman lebih dari [X] tahun, saya fokus pada pendekatan medis yang berbasis bukti (evidence-based) namun tetap mengedepankan sisi kemanusiaan. Saya percaya komunikasi adalah kunci utama dalam proses penyembuhan.</p>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="assets/gallery1.jpg" alt="Kegiatan Medis 1"></div>
-                    <div class="gallery-item"><img src="assets/gallery2.jpg" alt="Kegiatan Medis 2"></div>
-                    <div class="gallery-item"><img src="assets/gallery3.jpg" alt="Kegiatan Medis 3"></div>
+                    <div class="gallery-item"><img src="gallery1.jpg" alt="Kegiatan Medis 1"></div>
+                    <div class="gallery-item"><img src="gallery2.jpg" alt="Kegiatan Medis 2"></div>
+                    <div class="gallery-item"><img src="gallery3.jpg" alt="Kegiatan Medis 3"></div>
                 </div>
             </div>
         </div>
@@ -343,7 +344,6 @@
     </footer>
 
     <script>
-        // Smooth scroll listener for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
